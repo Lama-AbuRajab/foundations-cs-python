@@ -25,7 +25,7 @@ JSON file to a dictionary and stores it in a list. The function should return th
 the objects in the JSON file as dictionaries (so basically it should return a list of dictionaries).
 (This should be done manually without the use of any libraries)
 
-Choice 4: will terminate the program
+Choice 4: will terminate the program#
 
 
 1-import json
@@ -99,7 +99,7 @@ d. NlogN +1000
 e. logN +N
 f. 1⁄2N(N-1)
 g. N2+220NlogN2+3N+9000
-h. N!+3N+2N+N3+N2
+h. N!+3N+2N+N3+N2#
 
 The order of growth for each function with respect to the input size N is as follows:
 a. O(N^3)
