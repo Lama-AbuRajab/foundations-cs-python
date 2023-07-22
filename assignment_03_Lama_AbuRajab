@@ -1,1 +1,112 @@
+#In this assignment, you will be tasked with writing a Python program that utilizes tuples and
+dictionaries, The program will begin by displaying a menu with four options:
+1. Sum Tuples
+2. Export JSON
+3. Import JSON
+4. Exit
+- - - - - - - - - - - - - - -
+Enter a choice:
+The user will select one of the options by entering the corresponding number, the menu should
+be displayed again after every choice until the user exists the program.
 
+Choice 1: This function takes two tuples as parameters and returns a new tuple that contains the
+sum of the corresponding elements in the input tuples. The input tuples are assumed to be of the
+same length
+Example 1: Input: tup1 = (1, 2, 3), tup2 = (4, 5, 6) Output: (5, 7, 9)
+Example 2: Input: tup1 = (3, 3, 4, 4), tup2 = (1, 1, 1, 1) Output: (4, 4, 5, 5)
+
+Choice 2: This function takes a dictionary and a filename as parameters and writes the
+dictionary to a JSON (JavaScript Object Notation) file with the specified filename, the resulting
+JSON file should be valid and correctly formatted, (This should be done manually without the
+use of any libraries)
+
+Choice 3: This function takes a JSON file name as parameter and convert each object in the
+JSON file to a dictionary and stores it in a list. The function should return the list containing all
+the objects in the JSON file as dictionaries (so basically it should return a list of dictionaries).
+(This should be done manually without the use of any libraries)
+
+Choice 4: will terminate the program
+
+
+1-import json
+
+def sum_tuples(tup1, tup2):
+    return tuple(a + b for a, b in zip(tup1, tup2))
+
+def export_to_json(data_dict, filename):
+    with open(filename, 'w') as file:
+        json.dump(data_dict, file)
+
+def import_from_json(filename):
+    with open(filename, 'r') as file:
+        data_list = json.load(file)
+    return data_list
+
+def main():
+    while True:
+        print("- - - - - - - - - - - - - - -")
+        print("1. Sum Tuples")
+        print("2. Export JSON")
+        print("3. Import JSON")
+        print("4. Exit")
+        choice = input("Enter a choice: ")
+
+        if choice == '1':
+            tup1 = tuple(map(int, input("Enter the first tuple (comma-separated): ").split(',')))
+            tup2 = tuple(map(int, input("Enter the second tuple (comma-separated): ").split(',')))
+            if len(tup1) == len(tup2):
+                result = sum_tuples(tup1, tup2)
+                print("Output:", result)
+            else:
+                print("Error: Tuples must be of the same length.")
+
+        elif choice == '2':
+            data_dict = {}
+            num_items = int(input("Enter the number of key-value pairs in the dictionary: "))
+            for _ in range(num_items):
+                key = input("Enter the key: ")
+                value = input("Enter the value: ")
+                data_dict[key] = value
+
+            filename = input("Enter the filename for JSON export: ")
+            export_to_json(data_dict, filename)
+            print(f"Data has been exported to {filename}")
+
+        elif choice == '3':
+            filename = input("Enter the filename for JSON import: ")
+            data_list = import_from_json(filename)
+            print("Data from JSON file as dictionaries:")
+            for data in data_list:
+                print(data)
+
+        elif choice == '4':
+            print("Exiting the program...")
+            break
+
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+if __name__ == "__main__":
+    main()
+
+#Exercise
+Use the big-O notation to indicate the order of growth of each of the following functions where
+N is the size of the input.
+a. 1/6N+8000N3+24
+b. 1/6N3
+c. 1/6N! +200N4
+d. NlogN +1000
+e. logN +N
+f. 1⁄2N(N-1)
+g. N2+220NlogN2+3N+9000
+h. N!+3N+2N+N3+N2
+
+The order of growth for each function with respect to the input size N is as follows:
+a. O(N^3)
+b. O(N^3)
+c. O(N^4)
+d. O(NlogN)
+e. O(N)
+f. O(N^2)
+g. O(N^2)
+h. O(N!)
